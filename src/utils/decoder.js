@@ -1,6 +1,6 @@
 const { en, EN, LENGTH, Actions } = require('../const/const');
 
-const decoder = (str, { shift, action }) => {
+const decoder = (str, shift, action) => {
     const delta = shift % LENGTH;
 
     if (delta === 0) {
@@ -11,10 +11,12 @@ const decoder = (str, { shift, action }) => {
     const toTheRigthDecode = action === Actions.decode.value && delta < 0;
 
     if (toTheRightEncode || toTheRigthDecode) {
-        return coding(str, delta);
+        const reverse = (delta > 0) ? delta : -delta;
+        return coding(str, reverse);
     }
 
-    return coding(str, -delta);
+    const reverse = (delta > 0) ? -delta : delta;
+    return coding(str, reverse);
 }
 
 const coding = (str, shift) => Array.from(str).map((char) => {

@@ -21,7 +21,7 @@ const LENGTH = en.length;
 
 module.exports = {
     Actions,
-    en,
+    LENGTH,
     EN,
-    LENGTH
+    en,
 };

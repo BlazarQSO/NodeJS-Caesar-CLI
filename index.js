@@ -1,20 +1,19 @@
 const { options } = require('./src/services/command');
 const { validator } = require('./src/utils/validator');
-const { decoder } = require('./src/utils/decoder');
-const { EN } = require('./src/const/const');
+const { pipeline } = require('stream');
+const { Transformer, endedPipeline } = require('./src/services/transformer');
 
-class Messager {
-    static output({ message, color }) {
-        console.log(message);
-    }
-}
+const fs = require('fs');
 
-if (!validator(options)) {
+if (validator(options)) {
     process.exit(2);
 }
 
-const temp = 'abcd.|ABCD';
-console.log(decoder(temp, options));
+const { input, output, shift, action } = options;
 
-
-Messager.output({ message: options });
+pipeline(
+    input ? fs.createReadStream(input) : process.stdin,
+    new Transformer(shift, action),
+    output ? fs.createWriteStream(output, { flags: 'a' }) : process.stdout,
+    (error) => endedPipeline(error, action),
+);
