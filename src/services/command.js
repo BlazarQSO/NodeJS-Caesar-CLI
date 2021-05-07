@@ -1,10 +1,10 @@
-const { Command, Option, commander } = require('commander');
+const { Command } = require('commander');
 
 const program = new Command();
 program.version('0.0.1');
 
 program
-    .option('-s, --shift <type>', 'shift') // , myParseInt)
+    .option('-s, --shift <type>', 'shift')
     .option('-i, --input <type>', 'input')
     .option('-o, --output <type>', 'output')
     .option('-a, --action <type>', 'action');

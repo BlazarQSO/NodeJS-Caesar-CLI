@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { Actions } = require('../const/const');
 
 const validator = ({ action, shift, input, output }) => {
     const res = { resultValidation: true };
@@ -27,7 +28,7 @@ const validAction = (action, res) => {
         res.resultValidation = false;
         console.log('error: there is no command --action');
     }
-    if (action && action !== 'encode' && action !== 'decode') {
+    if (action && action !== Actions.encode.value && action !== Actions.decode.value) {
         res.resultValidation = false;
         console.log(`error: action must be 'encode' or 'decode'`);
     }

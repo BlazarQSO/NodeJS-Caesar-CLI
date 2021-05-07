@@ -9,6 +9,7 @@
   "author": "Ivkov Sergey (Iukou Siarhei)",
   "license": "ISC",
   "dependencies": {
-    "commander": "^7.2.0"
+    "commander": "^7.2.0",
+    "enum": "^3.0.4"
   }
 }
