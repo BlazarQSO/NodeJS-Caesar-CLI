@@ -15,13 +15,13 @@
 
 **For help:**
 
-1. **node caesar-cli --help**
-1. **node caesar-cli -h**
+1. **node index --help**
+1. **node index -h**
 
 -----
 ## **Start**
-To run the application, type **node caesar-cli** in the terminal and then type the necessary parameters.
+To run the application, type **node index** in the terminal and then type the necessary parameters.
 
 -----
 ## **For Exapmle**
-**node caesar-cli -a encode -s 7 -i "./input.txt" -o "./output.txt"**
+**node index -a encode -s 7 -i "./input.txt" -o "./output.txt"**
