@@ -1,26 +1,42 @@
 const chalk = require('chalk');
 
-const error = chalk.bold.red;
-const warning = chalk.hex('#FFA500'); // Orange color
-
-console.log(error('Error!'));
-console.log(warning('Warning!'));
-
 class Messager {
-    static output({ message, color }) {
-        console.log(message);
-    }
-    static outputCSS(message) {
-        console.log(chalk.red(message));
-        console.log(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));
-        console.log(chalk.hex('#DEADED').bold('Bold gray!'));
-        const miles = 18;
-        const calculateFeet = miles => miles * 5280;
+    static warning = chalk.hex('#FFA500');
+    static error = chalk.red;
+    static text = chalk.hex('#143CDC');
+    static bg = chalk.bgWhiteBright;
+    static bold = chalk.bold;
+    static success = chalk.green;
 
-        console.log(chalk`
-	{bgCyan There are {bold 5280 feet} in a mile.}
-	In {bold ${miles} miles}, there are {green.bold ${calculateFeet(miles)} feet}.
+    static errorCommand(str) {
+        return this.bold(`
+        ${this.error('[ERR]')} ${this.warning(str)}
 `);
+    }
+
+    static errorRequired(str) {
+        process.stderr.write(this.bg(`${this.error('[ERR]')} ${this.warning(str)}\n`));
+    }
+
+    static isNotIntager(str) {
+        process.stderr.write(`${this.error('[ERR]')} ${this.warning(str)}\n`);
+    }
+
+    static errorAction(str) {
+        process.stderr.write(`${this.error('[ERR]')} ${this.bold(str)}\n`);
+    }
+
+    static errorPath(start = '', str = '', end = '') {
+        const message = `${this.text(start)} ${this.bold(str)} ${this.text(end)}`;
+        process.stderr.write(`${this.error('[ERR]')} ${message}\n`);
+    }
+
+    static decodeCompleted(str) {
+        process.stderr.write(`${this.text(str)}\n`);
+    }
+
+    static encodeCompleted(str) {
+        process.stderr.write(`${this.success(str)}\n`);
     }
 };
 

@@ -1,6 +1,7 @@
 const { Transform } = require('stream');
 const { decoder } = require('../utils/decoder');
 const { Actions } = require('../const/const');
+const { Messager } = require('./messager');
 
 class Transformer extends Transform {
     constructor(shift, action) {
@@ -19,14 +20,14 @@ class Transformer extends Transform {
 
 const endedPipeline = (error, action) => {
     if (error) {
-        console.error('Error: stream is failed');
-        process.exit(2);
+        Messager.errorCommand('Error: stream is failed');
+        process.exit(1);
     }
 
     if (action === Actions.encode.value) {
-        console.log('Encoding completed!');
+        Messager.encodeCompleted('Encoding completed!');
     } else {
-        console.log('Decoding completed!');
+        Messager.decodeCompleted('Decoding completed!');
     }
 }
 

@@ -12,6 +12,13 @@
 1. **-a, --action:** an action encode/decode
 
 -----
+
+**For help:**
+
+1. **node caesar-cli --help**
+1. **node caesar-cli -h**
+
+-----
 ## **Start**
 To run the application, type **node caesar-cli** in the terminal and then type the necessary parameters.
 

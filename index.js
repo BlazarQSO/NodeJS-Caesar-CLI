@@ -2,11 +2,10 @@ const { options } = require('./src/services/command');
 const { validator } = require('./src/utils/validator');
 const { pipeline } = require('stream');
 const { Transformer, endedPipeline } = require('./src/services/transformer');
-
 const fs = require('fs');
 
 if (validator(options)) {
-    process.exit(2);
+    process.exit(1);
 }
 
 const { input, output, shift, action } = options;
