@@ -11,7 +11,7 @@ program
     .option('-a, --action <encode|decode>', 'action')
     .configureOutput({
         writeOut: (str) => process.stdout.write(`[OUT] ${str}`),
-        writeErr: (str) => process.stdout.write(Messager.errorCommand(str)),
+        writeErr: (str) => process.stderr.write(Messager.errorCommand(str)),
     });
 
 program.parse(process.argv);
